@@ -1,0 +1,7 @@
+{
+  "name": "sinuca",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
