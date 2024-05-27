@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+    <ion-button slot="end" style="margin-right: 15px;">
+      <ion-icon name="person-add"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-card style="padding: 10px;">
+          <div style="margin-top: 5%; text-align: center;">
+            <ion-card-title> Matheus <!-- {{jogadores.nome}} --></ion-card-title>
+            <ion-card-content>
+
+            </ion-card-content>
+            <ion-item>
+              <ion-label style="font-size: 30px; color: gray; text-align: center;">{{pontos}}
+              </ion-label>
+            </ion-item>
+            <div class="button-group">
+              <ion-button (click)="adicionarPontos()" color="success">
+                <ion-icon name="add" color="light"></ion-icon>
+              </ion-button>
+              <ion-button (click)="removerPontos()" color="danger">
+                <ion-icon name="remove"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div id="container">
+    <ion-card class="ion-text-center">
+      <ion-card-header>
+        <ion-card-title>
+          Relatório
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="ion-justify-content-center">
+
+
+        <google-chart [type]="chart.type" [data]="chart.data" [columns]="chart.columns" [options]="chart.options">
+        </google-chart>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
