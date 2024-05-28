@@ -1,13 +1,78 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Sorteador</ion-title>
+  <ion-toolbar color="dark">
+    <ion-title>Sorteador de Times</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
+  <ion-card style="padding: 20px">
+    <ion-card-title> Adicionar </ion-card-title>
+    <ion-card-content>
+      <ion-item>
+        <ion-icon name="person" style="margin-right: 10px;"></ion-icon>
+        <ion-input labelPlacement="stacked" [(ngModel)]="novoJogador" placeholder="Digite o nome do jogador"
+          (keydown.enter)="adicionarJogador()"></ion-input>
+        <ion-button (click)="adicionarJogador()" color="primary" display="block">
+          <ion-icon style="font-size: 25px; margin-right: 10px;" name="add-circle"></ion-icon>
+          Adicionar
+        </ion-button>
+      </ion-item>
+    </ion-card-content>
 
-    </ion-toolbar>
-  </ion-header>
+    <ion-list style="margin: 30px">
+      <div *ngIf="jogadores.length === 0" style="display: flex; justify-content: center;">
+        <p> ( Lista vazia )</p>
+      </div>
+
+      <ion-item *ngFor="let jogador of jogadores; let i = index">
+        <ion-chip color="primary">
+          <ion-icon name="person"></ion-icon>
+          <ion-label> {{ jogador }}</ion-label>
+        </ion-chip>
+        <ion-button slot="end" color="danger" (click)="removerJogador(i)">
+          <ion-icon style="font-size: 20px; margin-right: 10px;" name="remove-circle"></ion-icon>
+          remover
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <div style="display: flex; justify-content: center;">
+    <ion-button size="medium" (click)="sortearTimes()" color="primary">
+      Sortear times
+    </ion-button>
+  </div>
+
+  <ion-grid *ngIf="timeSorteado">
+    <ion-row>
+      <ion-col>
+        <ion-card style="border-radius: 20px;">
+          <ion-card-header color="primary" style="text-align: center;">
+            <ion-card-title>Time 1</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let jogador of time1">
+                {{ jogador }}
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="border-radius: 20px;">
+          <ion-card-header color="danger" style="text-align: center;">
+            <ion-card-title>Time 2</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let jogador of time2">
+                {{ jogador }}
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
