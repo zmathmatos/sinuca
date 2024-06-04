@@ -27,8 +27,8 @@ export class SorteadorPage {
   }
 
   sortearTimes() {
-    if (this.jogadores.length < 4) {
-      alert('Você precisa de pelo menos 4 jogadores para sortear dois times.');
+    if (this.jogadores.length === 4) {
+      alert('Somente 4 jogadores por partida.');
       return;
     }
 
